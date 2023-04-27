@@ -1,0 +1,32 @@
+package main;
+
+import java.util.Scanner;
+
+public class PrimosRecursiva {
+
+	public static void main(String args[]) {
+		System.out.println("Você gostaria de saber os números primos até que número?");
+		Scanner scanner = new Scanner(System.in);
+		String input = scanner.nextLine();
+		try {
+
+			for (int i = 2; i < Integer.parseInt(input); i++) {
+				primos(i, Math.ceil(Math.sqrt(i)));
+
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Este não é um input válido");
+			return;
+		}
+	}
+
+	public static int primos(int x, double i) {
+		if (i == 1)
+			System.out.print(x + " ");
+		if (x % i == 0)
+			return 0;
+		else
+			return primos(x, i - 1);
+	}
+
+}
